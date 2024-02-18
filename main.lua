@@ -15,6 +15,8 @@ end
 
 MyCharacterMod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, MyCharacterMod.GiveCostumesOnInit)
 
+-- Function to remove rubber cement's costume from character
+-- Not perfect, as it is visible in the starting moments of a run before character is controllable
 function MyCharacterMod:RemoveCementCostume(player)
     if player.FrameCount ~= 1 then
       return
