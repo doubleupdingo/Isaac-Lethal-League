@@ -1,0 +1,19 @@
+<players root="gfx/characters/costumes/" portraitroot="gfx/ui/stage/" nameimageroot="gfx/ui/boss/">
+    <player name="Gabriel"
+        skin="character_gabriel.png"
+        nameimage="playername_gabriel.png"
+        heartcontainers="4"
+        redhearts="4"
+        goldenhearts="1"
+        keys="1"
+        luckmodifier="2"
+        rangemodifier="3.5"
+        shotspeedmodifier="1"
+        firedelaymodifier="-1.23"
+        portrait="playerportrait_gabriel.png"
+        skinColor="-1"
+        items="221"
+        trinket="129"
+        birthright="Have a jawbreaker!"
+    />
+</players>
