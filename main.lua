@@ -2,7 +2,7 @@ local MyCharacterMod = RegisterMod("Gabriel Character Mod", 1)
 
 local gabrielType = Isaac.GetPlayerTypeByName("Gabriel", false) -- Exactly as in the xml. The second argument is if you want the Tainted variant.
 local hairCostume = Isaac.GetCostumeIdByPath("gfx/characters/gabriel_hair.anm2") -- Exact path, with the "resources" folder as the root
-local stolesCostume = Isaac.GetCostumeIdByPath("gfx/characters/gabriel_stoles.anm2") -- Exact path, with the "resources" folder as the root
+-- local stolesCostume = Isaac.GetCostumeIdByPath("gfx/characters/gabriel_stoles.anm2") -- Exact path, with the "resources" folder as the root
 
 function MyCharacterMod:GiveCostumesOnInit(player)
     if player:GetPlayerType() ~= gabrielType then
@@ -10,7 +10,6 @@ function MyCharacterMod:GiveCostumesOnInit(player)
     end
 
     player:AddNullCostume(hairCostume)
-    player:AddNullCostume(stolesCostume)
 end
 
 MyCharacterMod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, MyCharacterMod.GiveCostumesOnInit)
