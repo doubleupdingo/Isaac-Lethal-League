@@ -1,0 +1,9 @@
+<ItemPools>
+    <Pool Name="treasure">
+        <Item Name="Jet's Skates" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Switch's Hat" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Ivory Puppet: Retribution" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Ashes Ascent" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+        <Item Name="Dice's Paddle" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+    </Pool>
+</ItemPools>

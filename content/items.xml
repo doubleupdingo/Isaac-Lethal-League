@@ -1,7 +1,7 @@
-<items gfxroot="gfx/items/" version="1">
+<items gfxroot="gfx/items/" deathanm2="gfx/death_items.anm2" version="1">
     <passive id="0" name="Jet's Skates" gfx="jet_skates_item.png" description="Speed up. Drop it" quality="2" cache="speed" />
-    <passive id="1" name="Switch's Hat" gfx="switch_hat_item.png" description="HP up. Gnarly!" quality="3" cache="speed range" />
-    <passive id="2" name="Ivory Puppet: Retribution" gfx="ivory_puppet_item.png" description="HP up. Mourn the killer" quality="2" cache="speed" />
+    <passive id="1" name="Switch's Hat" gfx="switch_hat_item.png" description="HP up. Gnarly!" quality="2" cache="speed range" maxhearts="2" hearts="2" />
+    <passive id="2" name="Ivory Puppet: Retribution" gfx="ivory_puppet_item.png" description="HP up. Mourn the killer" quality="2" cache="speed" maxhearts= "6" hearts="6" />
     <passive id="3" name="Ashes Ascent" gfx="ashes_ascent_item.png" description="Good grief" quality="3" cache="damage flying" />
-    <passive id="4" name="Dice's Paddle" gfx="dice_paddle_item.png" description="Ayaaaa!" quality="3" cache="speed range shotspeed" />
+    <passive id="4" name="Dice's Paddle" gfx="dice_paddle_item.png" description="Ayaaaa!" quality="2" cache="speed range shotspeed" />
 </items>
