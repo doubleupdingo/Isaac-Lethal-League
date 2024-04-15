@@ -13,4 +13,6 @@ Once Repentogon is installed and working, simply make a folder in the game's Mod
 ## Credits & Thanks
 Credit to VideoJames (Discord: bigjimothy) for providing most of Candyman's sprites and brainstorming ideas for the mod.
 
-Thanks to [catinsurance](https://www.youtube.com/@catinsured) on Youtube for their [Repentance Modding Tutorials series](https://www.youtube.com/playlist?list=PLkIbky8_pFUpqAF9l7dh_YsEV-zpJ4q50), which provided helpful template code for custom characters.
+Made possible with the [Isaac LUA Modding API Documentation](https://wofsauge.github.io/IsaacDocs/rep/).
+
+Thanks to [catinsurance](https://www.youtube.com/@catinsured) on Youtube for their [Repentance Modding Tutorials series](https://www.youtube.com/playlist?list=PLkIbky8_pFUpqAF9l7dh_YsEV-zpJ4q50) which provided helpful template code for custom characters, among other great tutorials.
