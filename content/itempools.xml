@@ -6,4 +6,7 @@
         <Item Name="Ashes Ascent" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
         <Item Name="Dice's Paddle" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
     </Pool>
+    <Pool Name="secret">
+        <Item Name="Slice Dice" Weight="1" DecreaseBy="1" RemoveOn="0.1" />
+    </Pool>
 </ItemPools>
