@@ -3,10 +3,26 @@ local mod = RegisterMod("Lethal League Blaze", 1)
 local candymanType = Isaac.GetPlayerTypeByName("Candyman", false) -- Exactly as in the xml. The second argument is if you want the Tainted variant.
 local hairCostume = Isaac.GetCostumeIdByPath("gfx/characters/candyman_hat.anm2") -- Exact path, with the "resources" folder as the root
 
+local sliceUse = 0
+local sliceSpeed = 0
+local sliceRange = 0
+local sliceDamage = 0
+local sliceShotSpeed = 0
+local sliceFireDelay = 0
+local sliceLuck = 0
+
 function mod:GiveCostumesOnInit(player)
     if player:GetPlayerType() ~= candymanType then
         return -- End the function early. The below code doesn't run, as long as the player isn't Candyman.
     end
+
+    sliceUse = 0
+    sliceSpeed = 0
+    sliceRange = 0
+    sliceDamage = 0
+    sliceShotSpeed = 0
+    sliceFireDelay = 0
+    sliceLuck = 0
 
     player:AddNullCostume(hairCostume)
 end
@@ -52,12 +68,31 @@ local dicePaddleRange = 120
 local dicePaddleShotSpeed = 0.2
 
 local sliceDice = Isaac.GetItemIdByName("Slice Dice")
-local sliceUse = 0
+
 function mod:SliceDiceUse()
     local itemPool = Game():GetItemPool()
     local entities = Isaac.GetRoomEntities()
-    sliceUse = math.random(1, 6)
+    sliceUse = math.random(6)
     
+    if sliceUse == 1 then
+        sliceSpeed = sliceSpeed + 1
+    end
+    if sliceUse == 2 then
+        sliceRange = sliceRange + 1
+    end
+    if sliceUse == 3 then
+        sliceDamage = sliceDamage + 1
+    end
+    if sliceUse == 4 then
+        sliceShotSpeed = sliceShotSpeed + 1
+    end
+    if sliceUse == 5 then
+        sliceFireDelay = sliceFireDelay + 1
+    end
+    if sliceUse == 6 then
+        sliceLuck = sliceLuck + 1
+    end
+
     for _, entity in ipairs(entities) do
         if entity.Type == EntityType.ENTITY_PICKUP and entity.Variant == PickupVariant.PICKUP_COLLECTIBLE and entity.SubType ~= 0 and entity.SubType ~= 668 then
             entity:ToPickup():Morph(EntityType.ENTITY_PICKUP, PickupVariant.PICKUP_COLLECTIBLE, 0, true)
@@ -65,8 +100,6 @@ function mod:SliceDiceUse()
             itemPool:RemoveCollectible(entity.SubType)
         end
     end
-
-    mod:EvaluateCache()
 
     return true -- Discharge true, Remove false, ShowAnim true
 end
@@ -84,9 +117,7 @@ function mod:EvaluateCache(player, cacheFlags)
         local itemCount = player:GetCollectibleNum(dicePaddle) -- Dice's Paddle (speed)
         local speedToAdd = dicePaddleSpeed * itemCount
         player.MoveSpeed = player.MoveSpeed + speedToAdd
-        if sliceUse == 1 then
-            player.MoveSpeed = player.MoveSpeed - 0.2
-        end
+        player.MoveSpeed = player.MoveSpeed - (0.2 * sliceSpeed)
     end
     if cacheFlags & CacheFlag.CACHE_RANGE == CacheFlag.CACHE_RANGE then -- Range cache
         local itemCount = player:GetCollectibleNum(switchHat) -- Switch's Hat (range)
@@ -95,25 +126,19 @@ function mod:EvaluateCache(player, cacheFlags)
         local itemCount = player:GetCollectibleNum(dicePaddle) -- Dice's Paddle (range)
         local rangeToAdd = dicePaddleRange * itemCount
         player.TearRange = player.TearRange + rangeToAdd
-        if sliceUse == 2 then
-            player.TearRange = player.TearRange - 20
-        end
+        player.TearRange = player.TearRange - (20 * sliceRange)
     end
     if cacheFlags & CacheFlag.CACHE_DAMAGE == CacheFlag.CACHE_DAMAGE then -- Damage cache
         local itemCount = player:GetCollectibleNum(ashesAscent) -- Ashes Ascent (damage)
         local damageToAdd = ashesAscentDamage * itemCount
         player.Damage = player.Damage + damageToAdd
-        if sliceUse == 3 then
-            player.Damage = player.Damage - 1
-        end
+        player.Damage = player.Damage - (1 * sliceDamage)
     end
     if cacheFlags & CacheFlag.CACHE_SHOTSPEED == CacheFlag.CACHE_SHOTSPEED then -- Shot speed cache
         local itemCount = player:GetCollectibleNum(dicePaddle) -- Dice's Paddle (shot speed)
         local shotSpeedToAdd = dicePaddleShotSpeed * itemCount
         player.ShotSpeed = player.ShotSpeed + shotSpeedToAdd
-        if sliceUse == 4 then
-            player.ShotSpeed = player.ShotSpeed - 0.2
-        end
+        player.ShotSpeed = player.ShotSpeed - (0.2 * sliceShotSpeed)
     end
     if cacheFlags & CacheFlag.CACHE_FLYING == CacheFlag.CACHE_FLYING then -- Flying cache
         if player:GetCollectibleNum(ashesAscent) >= 1 then
@@ -121,16 +146,11 @@ function mod:EvaluateCache(player, cacheFlags)
         end
     end
     if cacheFlags & CacheFlag.CACHE_FIREDELAY == CacheFlag.CACHE_FIREDELAY then -- Tear rate cache
-        if sliceUse == 5 then
-            player.FireDelay = player.FireDelay - 0.5
-        end
+        player.MaxFireDelay = player.MaxFireDelay + (5 * sliceFireDelay)
     end
     if cacheFlags & CacheFlag.CACHE_LUCK == CacheFlag.CACHE_LUCK then -- Luck cache
-        if sliceUse == 6 then
-            player.Luck = player.Luck - 1
-        end
+        player.Luck = player.Luck - (1 * sliceLuck)
     end
-    sliceUse = 0
 end
 
 mod:AddCallback(ModCallbacks.MC_EVALUATE_CACHE, mod.EvaluateCache)
@@ -150,5 +170,5 @@ if EID then
     EID:addCollectible(ivoryPuppet, "{{Heart}} +3 Health#{{BrokenHeart}} +1 Broken Heart")
     EID:addCollectible(ashesAscent, "{{ArrowUp}} +1 Damage#Flight#{{BrokenHeart}} +1 Broken Heart")
     EID:addCollectible(dicePaddle, "{{ArrowUp}} +0.2 Speed#{{ArrowUp}} +3 Range#{{ArrowUp}} +0.2 Shot speed")
-    EID:addCollectible(sliceDice, "Rerolls all pedestal items in the room#{{ArrowDown}} Decreases a random stat")
+    EID:addCollectible(sliceDice, "Rerolls all pedestal items in the room#{{ArrowDown}} Decreases a random stat (excluding health)")
 end
