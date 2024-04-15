@@ -12,10 +12,7 @@ local sliceFireDelay = 0
 local sliceLuck = 0
 
 function mod:GiveCostumesOnInit(player)
-    if player:GetPlayerType() ~= candymanType then
-        return -- End the function early. The below code doesn't run, as long as the player isn't Candyman.
-    end
-
+    
     sliceUse = 0
     sliceSpeed = 0
     sliceRange = 0
@@ -23,6 +20,10 @@ function mod:GiveCostumesOnInit(player)
     sliceShotSpeed = 0
     sliceFireDelay = 0
     sliceLuck = 0
+    
+    if player:GetPlayerType() ~= candymanType then
+        return -- End the function early. The below code doesn't run, as long as the player isn't Candyman.
+    end
 
     player:AddNullCostume(hairCostume)
 end
