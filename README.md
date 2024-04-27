@@ -3,12 +3,12 @@
 ## What is this?
 An open source mod for [The Binding of Isaac: Repentance](https://store.steampowered.com/app/1426300/The_Binding_of_Isaac_Repentance/) that adds content inspired by [Lethal League Blaze](https://store.steampowered.com/app/553310/Lethal_League_Blaze/).
 
+[Steam Workshop Page](https://steamcommunity.com/sharedfiles/filedetails/?id=3233922664)
+
 ## How to Setup
 [REQUIRES REPENTOGON](https://repentogon.com/)
 
 Once Repentogon is installed and working, simply make a folder in the game's Mod folder, and download this repo's contents into the folder. Be sure to activate the mod in-game.
-
-*Steam Workshop page coming soon!
 
 ## Credits & Thanks
 Credit to VideoJames (Discord: bigjimothy) for providing most of Candyman's sprites and brainstorming ideas for the mod.
