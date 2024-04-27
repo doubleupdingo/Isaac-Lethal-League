@@ -1,7 +1,7 @@
 # The Binding of Isaac: Repentance Mod - Lethal League Blaze
 
 ## What is this?
-An open source mod for [The Binding of Isaac: Repentance](https://store.steampowered.com/app/1426300/The_Binding_of_Isaac_Repentance/) that adds content inspired by [Lethal League Blaze](https://store.steampowered.com/app/553310/Lethal_League_Blaze/). Heavy WIP. Hi Alex :)
+An open source mod for [The Binding of Isaac: Repentance](https://store.steampowered.com/app/1426300/The_Binding_of_Isaac_Repentance/) that adds content inspired by [Lethal League Blaze](https://store.steampowered.com/app/553310/Lethal_League_Blaze/).
 
 ## How to Setup
 [REQUIRES REPENTOGON](https://repentogon.com/)
