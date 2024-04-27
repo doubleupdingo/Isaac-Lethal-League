@@ -164,6 +164,33 @@ end
 
 mod:AddCallback(ModCallbacks.MC_POST_ADD_COLLECTIBLE, mod.PostAddCollectible)
 
+local TAINTED_CANDYMAN_TYPE = Isaac.GetPlayerTypeByName("Candyman", true)
+local CHEMICAL_CANE_ID = Isaac.GetItemIdByName("Chemical Cane")
+local game = Game()
+
+---@param player EntityPlayer
+function mod:TaintedCandymanInit(player)
+    if player:GetPlayerType() ~= TAINTED_CANDYMAN_TYPE then
+        return
+    end
+
+    player:SetPocketActiveItem(CHEMICAL_CANE_ID, ActiveSlot.SLOT_POCKET, true)
+end
+
+mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, mod.TaintedCandymanInit)
+
+function mod:ChemicalCaneUse(_, _, player)
+    local spawnPos = player.Position
+
+    local creep = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.PLAYER_CREEP_LEMON_MISHAP, 0, spawnPos, Vector.Zero, player):ToEffect()
+    creep.Scale = 1
+    creep:Update()
+
+    return true
+end
+
+mod:AddCallback(ModCallbacks.MC_USE_ITEM, mod.ChemicalCaneUse, CHEMICAL_CANE_ID)
+
 -- External Item Description implementations
 if EID then
     EID:addCollectible(jetSkates, "{{ArrowUp}} +0.4 Speed")

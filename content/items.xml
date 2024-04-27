@@ -5,4 +5,5 @@
     <passive id="3" name="Ashes Ascent" gfx="ashes_ascent_item.png" description="Good grief" quality="3" cache="damage flying" />
     <passive id="4" name="Dice's Paddle" gfx="dice_paddle_item.png" description="Ayaaaa!" quality="2" cache="speed range shotspeed" />
     <active id="5" name="Slice Dice" gfx="slice_dice_item.png" description="Sliced, diced, and rerolled" quality="3" maxcharges="3" chargetype="normal" cache="speed range shotspeed firedelay damage luck" />
+    <active id="6" name="Chemical Cane" description="Huh-ha, look out!" gfx="chemical_cane_item.png" maxcharges="150" chargetype="timed" quality="3" />
 </items>
