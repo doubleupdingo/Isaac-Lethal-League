@@ -179,7 +179,7 @@ end
 
 mod:AddCallback(ModCallbacks.MC_POST_PLAYER_INIT, mod.TaintedCandymanInit)
 
-function mod:ChemicalCaneUse(_, _, player)
+function mod:ChemicalCaneUse(_, _, player) -- Very much a placeholder effect
     local spawnPos = player.Position
 
     local creep = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.PLAYER_CREEP_LEMON_MISHAP, 0, spawnPos, Vector.Zero, player):ToEffect()
